@@ -1,17 +1,107 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>John's Portfolio</title>
-<style>
-h1 {text-align: center; color: #fff;}
-h2 {color: #fff;}
-a {color: #fff;}
-div {text-align: center;}
-ul {display: inline-block; list-style-type: none; text-align: left;}
-</style>
+    <title>John's Portfolio</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+			text-align: center;
+        }
+        h1 {
+            text-align: center;
+            color: #fff;
+        }
+        .tabs {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .tab-button {
+            display: inline-block;
+            padding: 10px 20px;
+            cursor: pointer;
+            background-color: #333;
+            border: 1px solid #555;
+            color: #fff;
+            margin: 0 5px;
+        }
+        .tab-button.active {
+            background-color: #555;
+        }
+        .tab-content {
+            display: none;
+            text-align: center;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .dashboard-images {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .dashboard-images img {
+            max-width: 400px;
+            border: 2px solid #fff;
+            border-radius: 5px;
+        }
+        ul, ol {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+    </style>
 </head>
-<body style="background-color:#000;">
-<h1>John's Portfolio</h1>
+<body>
+    <h1>John's Portfolio</h1>
+    <div class="tabs">
+        <div class="tab-button" data-tab="powerbi">Power BI Dashboards</div>
+        <div class="tab-button" data-tab="tableau">Tableau Dashboards</div>
+    </div>
+    <div id="powerbi" class="tab-content">
+        <h2>Power BI Dashboards</h2>
+        <div class="dashboard-images">
+            <a href="powerbi/powerbi1.png" target="_blank"><img src="powerbi/powerbi1.png" alt="Power BI Dashboard 1"></a>
+            <a href="powerbi/powerbi2.png" target="_blank"><img src="powerbi/powerbi2.png" alt="Power BI Dashboard 2"></a>
+            <a href="powerbi/powerbi3.png" target="_blank"><img src="powerbi/powerbi3.png" alt="Power BI Dashboard 3"></a>
+            <a href="powerbi/powerbi4.png" target="_blank"><img src="powerbi/powerbi4.png" alt="Power BI Dashboard 4"></a>
+            <a href="powerbi/powerbi5.png" target="_blank"><img src="powerbi/powerbi5.png" alt="Power BI Dashboard 5"></a>
+            <a href="powerbi/powerbi6.png" target="_blank"><img src="powerbi/powerbi6.png" alt="Power BI Dashboard 6"></a>
+        </div>
+    </div>
+    <div id="tableau" class="tab-content">
+        <h2>Tableau Dashboards</h2>
+        <div class="dashboard-images">
+            <a href="tableau/tableau1.png" target="_blank"><img src="tableau/tableau1.png" alt="Tableau Dashboard 1"></a>
+            <a href="tableau/tableau2.png" target="_blank"><img src="tableau/tableau2.png" alt="Tableau Dashboard 2"></a>
+            <a href="tableau/tableau3.png" target="_blank"><img src="tableau/tableau3.png" alt="Tableau Dashboard 3"></a>
+            <a href="tableau/tableau4.png" target="_blank"><img src="tableau/tableau4.png" alt="Tableau Dashboard 4"></a>
+            <a href="tableau/tableau5.png" target="_blank"><img src="tableau/tableau5.png" alt="Tableau Dashboard 5"></a>
+            <a href="tableau/tableau6.png" target="_blank"><img src="tableau/tableau6.png" alt="Tableau Dashboard 6"></a>
+            <a href="tableau/tableau7.png" target="_blank"><img src="tableau/tableau7.png" alt="Tableau Dashboard 7"></a>
+        </div>
+	</div>
+    <script>
+        document.querySelectorAll('.tab-button').forEach(button => {
+            button.addEventListener('click', () => {
+                const tabName = button.getAttribute('data-tab');
+                document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                document.querySelectorAll('.tab-content').forEach(content => {
+                    content.classList.remove('active');
+                    if (content.id === tabName) {
+                        content.classList.add('active');
+                    }
+                });
+            });
+        });
+
+        // Activate the first tab by default
+        document.querySelector('.tab-button').click();
+    </script>
 <div>
 <h2>Websites</h2>
 <ul>
@@ -19,6 +109,7 @@ ul {display: inline-block; list-style-type: none; text-align: left;}
 <li><a href="https://www.royalheritagemusic.com/">Royal Heritage Music</a></li>
 <li><a href="https://www.phreneticsports.com/">Phrenetic Sports</a></li>
 </ul>
+<br />
 <h2>Code Archives</h2>
 <ul>
 <li><a href="https://github.com/jicem/java">Java</a></li>
